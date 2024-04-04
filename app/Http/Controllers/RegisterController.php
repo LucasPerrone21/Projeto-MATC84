@@ -17,19 +17,23 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required',
         ]);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        if(strlen($request->password) < 6){
+            return redirect('/cadastro')->withErrors(['A Senha deve ter no mínimo 6 caracteres!']);
+        }
         $user->password = bcrypt($request->password);
         $user->is_admin = False;
 
-        
-        if (!auth()->attempt($request->only('email', 'password'))) {
-            return redirect('/cadastro')->withErrors(['Usuário já cadastrado!']);
+        $validacao = !auth()->attempt($request->only('email','password'));
+        if ($validacao) {
+            return redirect('/cadastro')->withErrors(['Email já cadastrado no Sistema!']);
         } 
+
         
         $user->save();
 
