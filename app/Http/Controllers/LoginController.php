@@ -39,7 +39,7 @@ class LoginController extends Controller
 
     public function forgotPassword()
     {
-        return view('forgot-password', [
+        return view('password.forgot', [
             'status' => null,
             'email' => null,
             'error' => null,
@@ -62,6 +62,13 @@ class LoginController extends Controller
             'error' => $status === Password::RESET_LINK_SENT ? null : $status,
         ];
 
-        return view('forgot-password', $result);
+        return view('password.forgot', $result);
     }
+
+    public function resetPassword(Request $request, $token)
+    {
+        return view('reset-password', ['token' => $token]);
+    }
+
+
 }

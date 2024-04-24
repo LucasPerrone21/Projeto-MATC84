@@ -20,3 +20,8 @@ Route::post('/forgot-password', [
     LoginController::class,
     'sendResetToken'
 ])->middleware('guest')->name('password.sendResetToken');
+
+Route::get('/reset-password/{token}', [
+    LoginController::class,
+    'resetPassword'
+])->middleware('guest')->name('password.reset');
