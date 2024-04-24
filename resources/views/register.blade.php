@@ -1,4 +1,4 @@
-<form action="/cadastroUser" method='POST'>
+<form action="/cadastro" method='POST'>
 @csrf
     <label for="email">Digite o email:</label>
     <input type="email" id="email" name="email">
