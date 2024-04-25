@@ -72,20 +72,23 @@ class LoginController extends Controller
 
     public function resetPassword(Request $request, $token)
     {
-        return view('reset-password', ['token' => $token]);
+        return view('password.reset', ['token' => $token]);
     }
 
-    public function updatePassword(Request $request, $token)
+    public function updatePassword(Request $request)
     {
         $request->only([
             'password',
             'password_confirmation',
             'token',
+            'email'
         ]);
 
         $request->validate(
             [
+                // os padrões de validação de senha são definidos em app/Providers/AppServiceProvider.php
                 'password' => ['required', 'confirmed', PasswordRules::defaults()],
+                'password_confirmation' => 'required',
                 'token' => 'required',
             ],
             [
@@ -98,18 +101,14 @@ class LoginController extends Controller
             ]
         );
 
-        $email = DB::table('password_reset_tokens')
-            ->where('token', $token, 'and', 'created_at', '>', now()->subHour())
-            ->value('email');
-
-        if (!$email) {
+        if (!$request->email) {
             return back()->withErrors([
                 'token' => 'Token inválido.',
             ]);
         }
 
         $status = Password::reset(
-            $request->only('password', 'password_confirmation', 'token') + ['email' => $email],
+            $request->only('password', 'password_confirmation', 'token') + ['email' => $request->email],
             function (User $user, string $password) {
                 $user->forceFill([
                     'password' => bcrypt($password),
@@ -125,7 +124,7 @@ class LoginController extends Controller
 
         if ($status === Password::PASSWORD_RESET) {
             DB::table('password_reset_tokens')
-                ->where('email', $email)
+                ->where('email', $request->email)
                 ->delete();
         }
 
