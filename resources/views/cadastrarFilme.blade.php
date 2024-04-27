@@ -9,7 +9,7 @@
 
     <div class="row d-flex flex-column flex-lg-row gap-5 gap-lg-0">
         <div class="col-12 col-lg-8">
-            <form class="row g-3">
+            <form class="row g-3" id="movieForm">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label" style="color: #fff;">Título</label>
                   <input type="email" class="form-control" id="inputEmail4" placeholder="Digite o título do filme">
@@ -19,7 +19,21 @@
                     <label for="inputState" class="form-label" style="color: #fff;">Gênero</label>
                     <select id="inputState" class="form-select">
                       <option selected>Escolha...</option>
-                      <option>...</option>
+                      <option>Ação</option>
+                      <option>Aventura</option>
+                      <option>Comédia</option>
+                      <option>Comédia romântica</option>
+                      <option>Documentário</option>
+                      <option>Drama</option>
+                      <option>Espionagem</option>
+                      <option>Faroeste</option>
+                      <option>Fantasia</option>
+                      <option>Ficção científica</option>
+                      <option>Mistério</option>
+                      <option>Musical</option>
+                      <option>Policial</option>
+                      <option>Romance</option>
+                      <option>Terror</option>
                     </select>
                 </div>
 
@@ -35,7 +49,7 @@
 
                 <div class="col-12 d-flex gap-4">
                   <button type="submit" class="btn btn-primary">Cadastrar filme</button>
-                  <button type="submit" class="btn btn-danger">Cancelar</button>
+                  <button type="submit" class="btn btn-danger" onclick="resetForm()">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -50,6 +64,11 @@
     var loadFile = function(event) {
       var image = document.getElementById('movieImage');
       image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    var resetForm = function() {
+      document.getElementById('movieForm').reset();
+      document.getElementById('movieImage').src = 'assets/images/preview_img.svg';
     };
 </script>
 
