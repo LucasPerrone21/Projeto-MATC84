@@ -7,12 +7,25 @@
         <h1 class="text-white m-0">Cadastro de filmes</h1>
     </div>
 
+    {{-- Por padrão esses alerts estão com display: none --}}
+    <div class="alert alert-success d-none" role="alert" id="successAlert">
+        Filme cadastrado com sucesso!
+    </div>
+
+    <div id="alertContainer" class="d-none">
+        <div class="alert alert-danger alert-dismissible d-none" role="alert" id="errorAlert">
+            Por favor, preencha todos os campos.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {{-- Por padrão esses alerts estão com display: none --}}
+
     <div class="row d-flex flex-column flex-lg-row gap-5 gap-lg-0">
         <div class="col-12 col-lg-8">
-            <form class="row g-3" id="movieForm">
+            <form class="row g-3" id="movieForm" onsubmit="event.preventDefault();">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label" style="color: #fff;">Título</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Digite o título do filme">
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="Digite o título do filme">
                 </div>
 
                 <div class="col-md-6">
@@ -48,8 +61,8 @@
                 </div>
 
                 <div class="col-12 d-flex gap-4">
-                  <button type="submit" class="btn btn-primary">Cadastrar filme</button>
-                  <button type="submit" class="btn btn-danger" onclick="resetForm()">Cancelar</button>
+                  <button type="submit" class="btn btn-primary" onclick="submitForm()">Cadastrar filme</button>
+                  <button type="submit" class="btn btn-danger" onclick="resetForm()">Limpar formulário</button>
                 </div>
             </form>
         </div>
@@ -70,6 +83,51 @@
       document.getElementById('movieForm').reset();
       document.getElementById('movieImage').src = 'assets/images/preview_img.svg';
     };
+
+    var submitForm = function() {
+      var form = document.getElementById('movieForm');
+      var inputs = form.getElementsByTagName('input');
+      var select = form.getElementsByTagName('select');
+      var textarea = form.getElementsByTagName('textarea');
+
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == '') {
+          showAlert('Por favor, preencha todos os campos.', 'danger');
+          return;
+        }
+      }
+
+      for (var i = 0; i < select.length; i++) {
+        if (select[i].value == '') {
+          showAlert('Por favor, preencha todos os campos.', 'danger');
+          return;
+        }
+      }
+
+      for (var i = 0; i < textarea.length; i++) {
+        if (textarea[i].value == '') {
+          showAlert('Por favor, preencha todos os campos.', 'danger');
+          return;
+        }
+      }
+
+      showAlert('Filme cadastrado com sucesso!', 'success');
+    };
+
+    var showAlert = function(message, type) {
+        var alertContainer = document.getElementById('alertContainer');
+        alertContainer.classList.remove('d-none');
+        alertContainer.innerHTML = `
+            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    };
+
+    document.getElementById('errorAlert').addEventListener('closed.bs.alert', function () {
+        document.getElementById('alertContainer').classList.add('d-none');
+    });
 </script>
 
 @endsection
