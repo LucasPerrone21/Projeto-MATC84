@@ -9,10 +9,10 @@
                 <h1 class="text-white m-0">Catálogo de filmes</h1>
             </div>
 
-            <a href="#" class="btn btn-primary" style="background: #4248F2 !important">Adicionar Filme +</a>
+            <a href="/cadastrar-filme" class="btn btn-primary" style="background: #4248F2 !important">Adicionar Filme +</a>
         </div>
 
-        <div class="d-flex gap-5 flex-wrap justify-content-center ">
+        <div class="d-flex gap-5 flex-wrap justify-content-center">
             <x-movieCard
                 image="assets/images/movie_cover_img.svg"
                 title="Título do Filme 1"
