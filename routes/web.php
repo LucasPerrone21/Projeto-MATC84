@@ -2,8 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/administrador', function () {
+    return view('home');
+});
+
+Route::get('/cadastrar-filme', function () {
+    return view('cadastrarFilme');
 });
 
 Route::get('/cadastro', 'App\Http\Controllers\RegisterController@showRegistrationForm');
