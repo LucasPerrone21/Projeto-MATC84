@@ -9,6 +9,12 @@
                 <h1 class="text-white m-0">Catálogo de filmes</h1>
             </div>
 
+        @if(session('message'))
+        <div class="alert alert-success d-none" role="alert" id="successAlert">
+                <p>{{session('message')}}</p>
+            </div>
+        @endif
+
             <a href="/cadastrar-filme" class="btn btn-primary" style="background: #4248F2 !important">Adicionar Filme +</a>
         </div>
 
