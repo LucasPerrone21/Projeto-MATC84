@@ -4,6 +4,8 @@
     <input type="email" id="email" name="email">
     <label for="password">Digite a senha:</label>
     <input type="password" id="password" name="password">
+    <label for="password_confirmation">Confirme a senha:</label>
+    <input type="password" id="password_confirmation" name="password_confirmation">
     <label for="name">Digite o nome:</label>
     <input type="text" id="name" name="name">
     <button type="submit">Registrar</button>
