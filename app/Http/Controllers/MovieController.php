@@ -22,6 +22,7 @@ class MovieController extends Controller
     //
     public function index(){
         $movie=$this->objMovie->all();
+        
         return view('admin', compact('movie'));
     }
     
@@ -41,5 +42,11 @@ class MovieController extends Controller
             return redirect(to: 'administrador')->with('message', 'Filme cadastrado com sucesso!');
         }
 
+    }
+
+    public function destroy($id){
+        $del = Movie::find($id);
+        $del->delete();
+        return redirect('administrador')->with('message', 'Filme apagado com sucesso!');
     }
 }

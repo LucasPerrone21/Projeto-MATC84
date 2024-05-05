@@ -20,9 +20,9 @@
 
         <div class="d-flex gap-5 flex-wrap justify-content-center">
             @foreach($movie as $movies)
+
                 <x-movieCard :movie="$movies"/>
                 
-
             @endforeach
             
 

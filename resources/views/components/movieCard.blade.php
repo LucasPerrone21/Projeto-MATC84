@@ -12,7 +12,11 @@
 
       <div class="d-flex gap-3">
           <a href="#" class="btn btn-primary">Editar</a>
-          <a href="#" class="btn btn-danger">Excluir</a>
+          
+        <form action="{{url("/excluir-filmes/$movie->id")}}"  method="POST">
+        @csrf
+    @method('DELETE')
+        <button type="submit" class="btn btn-danger">Excluir</button>
       </div>
     </div>
 </div>
