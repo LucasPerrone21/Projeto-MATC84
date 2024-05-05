@@ -8,6 +8,7 @@
     <input type="text" id="name" name="name">
     <button type="submit">Registrar</button>
 </form>
+<a href="{{ route('password.forgot') }}">Esqueci a senha</a>
 
 @if ($errors->any())
         <div>
