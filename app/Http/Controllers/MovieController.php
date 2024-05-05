@@ -21,16 +21,20 @@ class MovieController extends Controller
     }
     //
     public function index(){
-        return view('admin');
+        $movie=$this->objMovie->all();
+        return view('admin', compact('movie'));
     }
     
     public function store(MovieRequest $request)
     {
+        $file_name = rand(0,999999) . '-' . $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('uploads', $file_name);
+
         $movies = $this->objMovie->create([
             'title' => $request->title,
             'description' => $request->description,
             'gender_movie' => $request->gender_movie,
-            'image' => $request->image,
+            'image' => $path,
         ]);
 
         if($movies){

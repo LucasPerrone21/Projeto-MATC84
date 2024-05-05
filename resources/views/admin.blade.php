@@ -19,47 +19,14 @@
         </div>
 
         <div class="d-flex gap-5 flex-wrap justify-content-center">
-            <x-movieCard
-                image="assets/images/movie_cover_img.svg"
-                title="Título do Filme 1"
-                subtitle="Subtítulo do Filme 1"
-                content="Algum texto rápido para construir o título do cartão e compor a maior parte do conteúdo do cartão."
-            />
+            @foreach($movie as $movies)
+                <x-movieCard :movie="$movies"/>
+                
 
-            <x-movieCard
-                image="assets/images/movie_cover_img.svg"
-                title="Título do Filme 2"
-                subtitle="Subtítulo do Filme 2"
-                content="'Algum texto rápido para construir o título do cartão e compor a maior parte do conteúdo do cartão.'"
-            />
+            @endforeach
+            
 
-            <x-movieCard
-                image="assets/images/movie_cover_img.svg"
-                title="Título do Filme 3"
-                subtitle="Subtítulo do Filme 3"
-                content="Algum texto rápido para construir o título do cartão e compor a maior parte do conteúdo do cartão."
-            />
-
-            <x-movieCard
-                image="assets/images/movie_cover_img.svg"
-                title="Título do Filme 4"
-                subtitle="Subtítulo do Filme 4"
-                content="Algum texto rápido para construir o título do cartão e compor a maior parte do conteúdo do cartão."
-            />
-
-            <x-movieCard
-                image="assets/images/movie_cover_img.svg"
-                title="Título do Filme 5"
-                subtitle="Subtítulo do Filme 5"
-                content="Algum texto rápido para construir o título do cartão e compor a maior parte do conteúdo do cartão."
-            />
-
-            <x-movieCard
-                image="assets/images/movie_cover_img.svg"
-                title="Título do Filme 6"
-                subtitle="Subtítulo do Filme 6"
-                content="Algum texto rápido para construir o título do cartão e compor a maior parte do conteúdo do cartão."
-            />
+            
         </div>
     </div>
 @endsection
