@@ -14,7 +14,7 @@
   <title>The Movie Club</title>
 </head>
 <body>
-    <x-navbar />
+    <x-navbarUser />
 
     <main>
         @yield('content')

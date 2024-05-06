@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appAdm')
 
 @section('content')
 <div class="container-fluid d-flex flex-column gap-5 px-4 px-lg-5 py-5" style="background: #1E1E1E">
