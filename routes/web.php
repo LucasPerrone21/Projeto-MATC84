@@ -7,10 +7,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('login');
 // });
-
 // Route::get('/administrador', function () {
 //     return view('home');
 // });
+
+
+Route::get('/usuario', function () {
+    return view('user');
+});
 
 Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
