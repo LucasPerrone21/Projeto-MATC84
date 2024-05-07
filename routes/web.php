@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/usuario', function () {
-    return view('user');
-});
+Route::get('/usuario', 'App\Http\Controllers\MovieController@indexUser');
 
 Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');

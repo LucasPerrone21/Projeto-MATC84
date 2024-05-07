@@ -57,6 +57,11 @@ class MovieController extends Controller
     
         return view('editMovie', compact('movie'));
     }
-    
+
+    public function indexUser(){
+        $movie=$this->objMovie->all();
+        
+        return view('user', compact('movie'));
+    }
     
 }
