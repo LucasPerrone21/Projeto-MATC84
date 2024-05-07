@@ -49,4 +49,14 @@ class MovieController extends Controller
         $del->delete();
         return redirect('administrador')->with('message', 'Filme apagado com sucesso!');
     }
+
+
+    public function edit($id)
+    {
+        $movie = $this->objMovie->find($id);
+    
+        return view('editMovie', compact('movie'));
+    }
+    
+    
 }
