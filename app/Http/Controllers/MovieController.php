@@ -42,4 +42,14 @@ class MovieController extends Controller
         }
 
     }
+
+
+    public function edit($id)
+    {
+        $movie = $this->objMovie->find($id);
+    
+        return view('editMovie', compact('movie'));
+    }
+    
+    
 }

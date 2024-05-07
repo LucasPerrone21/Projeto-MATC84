@@ -11,7 +11,7 @@
       </p>
 
       <div class="d-flex gap-3">
-          <a href="#" class="btn btn-primary">Editar</a>
+          <a href="{{ route('edit.movie', ['id' => $movie->id]) }}" class="btn btn-primary">Editar</a>
           <a href="#" class="btn btn-danger">Excluir</a>
       </div>
     </div>

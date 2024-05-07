@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
+Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
+//Route::get('/editar-filme/{id}', 'MovieController@edit')->name('edit.movie');
 Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
 
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
