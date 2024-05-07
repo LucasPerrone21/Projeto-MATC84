@@ -1,5 +1,10 @@
 <div class="card rounded" style="width: 24rem;">
-    <img src="{{ asset("storage/{$movie->image}") }}" class="card-img-top" alt="Imagem da Capa do filme">
+
+<?php 
+  header("Content-type: ".$movie->image_type);
+  echo '<img src="data:'.$movie->image_type.';base64,'.base64_encode($movie->image) .'" class="card-img-top" alt="Imagem da Capa do filme">'
+?>
+    
 
     <div class="card-body">
       <h5 class="card-title">{{ $movie->title }}</h5>

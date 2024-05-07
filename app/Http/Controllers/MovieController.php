@@ -28,14 +28,14 @@ class MovieController extends Controller
     
     public function store(MovieRequest $request)
     {
-        $file_name = rand(0,999999) . '-' . $request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storeAs('uploads', $file_name);
-
+        $img = file_get_contents($_FILES['image']['tmp_name']);
+        $img_type = $_FILES['image']['type'];
         $movies = $this->objMovie->create([
             'title' => $request->title,
             'description' => $request->description,
             'gender_movie' => $request->gender_movie,
-            'image' => $path,
+            'image' => $img,
+            'image_type' => $img_type
         ]);
 
         if($movies){

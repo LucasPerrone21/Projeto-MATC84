@@ -13,7 +13,8 @@ class Movie extends Model
         'title',
         'description',
         'gender_movie',
-        'image'
+        'image',
+        'image_type'
     ];
 }
 
