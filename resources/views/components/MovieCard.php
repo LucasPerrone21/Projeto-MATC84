@@ -28,5 +28,6 @@ class MovieCard extends Component
     public function render()
     {
         return view('components.movieCard');
+        return view('components.movieCardUser');
     }
 }

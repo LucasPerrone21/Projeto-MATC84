@@ -7,16 +7,21 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('login');
 // });
-
 // Route::get('/administrador', function () {
 //     return view('home');
 // });
+
+
+Route::get('/usuario', function () {
+    return view('user');
+});
 
 Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
 Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
 //Route::get('/editar-filme/{id}', 'MovieController@edit')->name('edit.movie');
 Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
+Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy');
 
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('registerForm');

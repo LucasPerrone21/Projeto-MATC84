@@ -22,25 +22,32 @@ class MovieController extends Controller
     //
     public function index(){
         $movie=$this->objMovie->all();
+        
         return view('admin', compact('movie'));
     }
     
     public function store(MovieRequest $request)
     {
-        $file_name = rand(0,999999) . '-' . $request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storeAs('uploads', $file_name);
-
+        $img = file_get_contents($_FILES['image']['tmp_name']);
+        $img_type = $_FILES['image']['type'];
         $movies = $this->objMovie->create([
             'title' => $request->title,
             'description' => $request->description,
             'gender_movie' => $request->gender_movie,
-            'image' => $path,
+            'image' => $img,
+            'image_type' => $img_type
         ]);
 
         if($movies){
             return redirect(to: 'administrador')->with('message', 'Filme cadastrado com sucesso!');
         }
 
+    }
+
+    public function destroy($id){
+        $del = Movie::find($id);
+        $del->delete();
+        return redirect('administrador')->with('message', 'Filme apagado com sucesso!');
     }
 
 
