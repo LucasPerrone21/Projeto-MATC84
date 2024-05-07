@@ -16,12 +16,11 @@ class RegisterController extends Controller
 
     public function register(Request $request): RedirectResponse
     {
-        dump("Chegou aqui");
         $request->validate([
             'name' => 'required|min:2|max:255',
             'email' => 'required|email|unique:users,email|max:255',
             # Os parâmetros padrão são definidos em app/Providers/AppServiceProvider.php
-            'password' => ['required'],
+            'password' => ['required', Password::defaults()],
             // 'password_confirmation' => 'required',
         ], [
             # Laravel permite a definição de mensagens de erro personalizadas
@@ -40,15 +39,13 @@ class RegisterController extends Controller
             // 'password.uncompromised' => 'A senha informada foi comprometida em um vazamento de'
             //     . ' dados, por favor, informe outra senha',
         ]);
-        dump("Chegou aqui");
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->is_admin = False;
 
-        dump($user->save());
-        dump("Chegou aqui");
+        $user->save();
        
 
         return redirect(route('loginPage'));
