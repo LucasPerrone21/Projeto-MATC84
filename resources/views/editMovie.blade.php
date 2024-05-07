@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appAdm')
 
 @section('content')
 <div class="container-fluid d-flex flex-column gap-5 px-4 px-lg-5 py-5" style="background: #1E1E1E">
@@ -62,7 +62,10 @@
         </div>
 
         <div class="col-12 col-lg-4">
-            <img src=" {{ $movie->image }}" id="movieImage" class="img-fluid" style="height: auto; width: 100%;" alt="imagem do filme">
+        <?php 
+            header("Content-type: ".$movie->image_type);
+            echo '<img src="data:'.$movie->image_type.';base64,'.base64_encode($movie->image) .'" class="card-img-top" alt="Imagem da Capa do filme">'
+        ?>
         </div>
     </div>
 </div>

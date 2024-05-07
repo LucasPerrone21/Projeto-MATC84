@@ -17,10 +17,6 @@
 
       <div class="d-flex gap-3">
           <a href="{{ route('edit.movie', ['id' => $movie->id]) }}" class="btn btn-primary">Editar</a>
-          <a href="#" class="btn btn-danger">Excluir</a>
-      </div>
-    </div>
-          <a href="#" class="btn btn-primary">Editar</a>
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
             Excluir
           </button>
