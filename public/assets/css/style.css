@@ -4,3 +4,16 @@
     box-sizing: border-box;
     font-family: Sora, sans-serif;
 }
+
+/* Tela de Cadastro */
+
+.register input  {
+    border: none;
+    height: 38px;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+div.form-group {
+    height: 86px;
+}
