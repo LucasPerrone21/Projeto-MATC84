@@ -6,6 +6,16 @@
         <h1 style="color: #FFFFFF; font-size: 32px; font-family: 'Inter', sans-serif; font-weight: 400">Entre na sua conta</h1>
         <p style="color: #FFFFFF; font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 200">Bem-vindo de volta!</p>
     </div>
+    <!-- Mensagem de senha incorreta -->
+    @if ($errors->any())
+    <div>
+        <ul style="padding-left: 0 !important">
+            @foreach ($errors->all() as $error)
+                <li class="alert alert-danger" role="alert">&#9888  {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="col-md-6 register d-flex justify-content-center ">
         <form action="/login" method='POST' style="width: 360px">
         @csrf
@@ -34,15 +44,6 @@
     <div>
         <p style="color: #FFFFFF">Não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
     </div>
-@if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 </div>
 
 @endsection
