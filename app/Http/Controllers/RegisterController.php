@@ -36,8 +36,8 @@ class RegisterController extends Controller
             'password.min' => 'A senha informada deve ter no mínimo 6 caracteres',
             'password.max' => 'A senha informada deve ter no máximo 64 caracteres',
             'password.numbers' => 'A senha informada deve conter números',
-            // 'password.uncompromised' => 'A senha informada foi comprometida em um vazamento de'
-            //     . ' dados, por favor, informe outra senha',
+            'password.uncompromised' => 'A senha informada foi comprometida em um vazamento de'
+                . ' dados, por favor, informe outra senha',
         ]);
         $user = new User();
         $user->name = $request->name;
