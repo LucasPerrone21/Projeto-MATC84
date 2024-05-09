@@ -17,7 +17,7 @@ Route::get('/usuario', 'App\Http\Controllers\MovieController@indexUser');
 Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
 Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
-//Route::get('/editar-filme/{id}', 'MovieController@edit')->name('edit.movie');
+Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
 Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
 Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy');
 

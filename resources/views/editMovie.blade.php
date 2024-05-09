@@ -15,8 +15,9 @@
 
     <div class="row d-flex flex-column flex-lg-row gap-5 gap-lg-0">
         <div class="col-12 col-lg-8">
-            <form class="row g-3" id="movieForm" method="POST" action="/cadastrar-filme" enctype="multipart/form-data">
+            <form class="row g-3" id="movieForm" method="POST" action="{{url("update/$movie->id")}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
                 <div class="col-md-6">
                   <label for="title" class="form-label" style="color: #fff;">Título</label>
                   <input type="text" class="form-control" id="title" name="title" value=" {{ $movie->title }}" required>
@@ -51,7 +52,7 @@
 
                 <div class="mb-3">
                     <label for="image" class="form-label" style="color: #fff;">Imagem de capa do filme</label>
-                    <input class="form-control" type="file" id="image" name="image" onchange="loadFile(event)" required>
+                    <input class="form-control" type="file" id="image" name="image" value="{{$movie->image}}" onchange="loadFile(event)">
                 </div>
 
                 <div class="col-12 d-flex gap-4">

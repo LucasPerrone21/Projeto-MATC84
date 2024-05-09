@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Http\Requests\MovieRequest;
+use App\Http\Requests\MovieEditRequest;
+
 
 
 class MovieController extends Controller
@@ -62,6 +64,30 @@ class MovieController extends Controller
         $movie=$this->objMovie->all();
         
         return view('user', compact('movie'));
+    }
+
+    public function update(MovieEditRequest $request, $id){
+        if($_FILES['image']['tmp_name']){
+            $img = file_get_contents($_FILES['image']['tmp_name']);
+            $img_type = $_FILES['image']['type'];
+            $this->objMovie->where(['id'=>$id])->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'gender_movie' => $request->gender_movie,
+                'image' => $img,
+                'image_type' => $img_type
+            ]);
+        }else{
+            $this->objMovie->where(['id'=>$id])->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'gender_movie' => $request->gender_movie,
+            ]);
+        }
+
+        
+
+        return redirect(to: 'administrador')->with('message', 'Filme atualizado com sucesso!');
     }
     
 }
