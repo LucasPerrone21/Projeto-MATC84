@@ -1,6 +1,7 @@
 @extends('layouts.authentication')
-
+@section('title', 'Cadastre-se no The Movie Club')
 @section('content')
+
 <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh; gap: 32px">
     <div class="text-center" style="width: 360px">
         <h1 style="color: #FFFFFF; font-size: 32px; font-family: 'Inter', sans-serif; font-weight: 400">Crie sua conta</h1>
