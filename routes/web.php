@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/administrador', function () {
 //     return view('home');
 // });
+Route::redirect('/', '/login');
 
 Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
