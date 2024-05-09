@@ -14,7 +14,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <title>The Movie Club</title>
+  <title>@yield('title')</title>
 </head>
 <body>
     <div class="container-fluid d-flex flex-column gap-5 px-4 px-lg-5 py-5" style="background: #191919">
