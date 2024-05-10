@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/administrador', function () {
 //     return view('home');
 // });
+Route::redirect('/', '/login');
 
 
 Route::get('/usuario', 'App\Http\Controllers\MovieController@indexUser');

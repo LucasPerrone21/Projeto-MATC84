@@ -27,9 +27,8 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (auth()->attempt($credentials)) {
-            return redirect('/');
+            return redirect('/usuario');
         }
-
         return back()->withErrors([
             'email' => 'E-mail ou senha incorretos.',
         ]);
