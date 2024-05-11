@@ -22,6 +22,9 @@ Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
 Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
 Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy');
 
+Route::get('editar-usuario/{id}', 'App\Http\Controllers\UserController@edit')->name('edit.user');
+Route::put('update-usuario/{id}', 'App\Http\Controllers\UserController@update');
+
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('registerForm');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
