@@ -46,8 +46,21 @@ class RegisterController extends Controller
         $user->is_admin = False;
 
         $user->save();
-       
 
+
+        return redirect(route('loginPage'));
+    }
+
+    public function deleteUser(Request $request): RedirectResponse
+    {
+        // Delete the user from the current session
+        $user = $request->user();
+        $id = $request->id;
+        if ($id != $user->id || !$user->is_admin) {
+            // redirect to where the user came from, signaling that the user is not authorized
+            return redirect()->back()->with('error', 'Você não tem permissão para excluir este usuário');
+        }
+        $user->delete();
         return redirect(route('loginPage'));
     }
 }
