@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
@@ -51,16 +52,26 @@ class RegisterController extends Controller
         return redirect(route('loginPage'));
     }
 
-    public function deleteUser(Request $request): RedirectResponse
+    public function delete(Request $request): JsonResponse
     {
-        // Delete the user from the current session
+        $user_to_delete = null;
+        $redirect = true;
         $user = $request->user();
-        $id = $request->id;
-        if ($id != $user->id || !$user->is_admin) {
-            // redirect to where the user came from, signaling that the user is not authorized
-            return redirect()->back()->with('error', 'Você não tem permissão para excluir este usuário');
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized.', 'success' => false, 'redirect' => false], 401);
+        } elseif ($user->is_admin) {
+            $redirect = false;
+            $user_to_delete = User::where('id', $request->id)->first();
+            if (!$user_to_delete) {
+                return response()->json(['error' => 'Usuário não encontrado.', 'success' => false, 'redirect' => false], 404);
+            }
+        } elseif ($request->id != $user->id) {
+            return response()->json(['error' => 'Usuário não pode deletar outro usuário.', 'success' => false, 'redirect' => false], 403);
+        } else {
+            $user_to_delete = $user;
         }
-        $user->delete();
-        return redirect(route('loginPage'));
+        $user_to_delete->delete();
+        $request->session()->invalidate();
+        return response()->json(['error' => null, 'success' => true, 'redirect' => $redirect], 200);
     }
 }
