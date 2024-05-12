@@ -60,7 +60,7 @@ class RegisterController extends Controller
         if (!$user) {
             return response()->json(['error' => 'Unauthorized.', 'success' => false, 'redirect' => false], 401);
         } elseif ($user->is_admin) {
-            $redirect = false;
+            $redirect = $request->id != $user->id;
             $user_to_delete = User::where('id', $request->id)->first();
             if (!$user_to_delete) {
                 return response()->json(['error' => 'Usuário não encontrado.', 'success' => false, 'redirect' => false], 404);
