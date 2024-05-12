@@ -27,7 +27,7 @@ Route::post('/cadastro', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
 Route::post('/login', [LoginController::class, 'login'])->name('loginForm');
 
-Route::delete('usuario/delete/{id}', [RegisterController::class, 'delete'])->name('deleteUser');
+Route::delete('/usuario/delete/{id}', [RegisterController::class, 'delete'])->name('deleteUser');
 
 Route::get('/forgot-password', [
     LoginController::class,
