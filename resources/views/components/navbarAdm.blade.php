@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #212529 !important;">
     <div class="container-fluid px-4 px-lg-5">
       <a class="navbar-brand" href="#">
-        <img src="assets/images/movie_club_logo.svg" alt="Logo do Movie Club">
+        <img src="{{ asset('assets/images/movie_club_logo.svg') }} " alt="Logo do Movie Club">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
           <li class="nav-item">
             <a class="nav-link d-flex gap-1" href="#">
                 <span class="nav-link text-white fw-bold">Bem vindo, Lucas</span>
-                <img class="img-fluid" src="assets/images/person-fill.svg" alt="Ícone de usuário">
+                <img class="img-fluid" src="{{ asset('assets/images/person-fill.svg') }} " alt="Ícone de usuário">
             </a>
           </li>
 

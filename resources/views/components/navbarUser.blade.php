@@ -23,8 +23,8 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex gap-1" href="#">
-                <span class="nav-link text-white fw-bold">Bem vindo, Lucas</span>
+            <a class="nav-link d-flex gap-1" href="/usuario-perfil">
+                <span class="nav-link text-white fw-bold">Bem vindo, alguém</span>
                 <img class="img-fluid" src="assets/images/person-fill.svg" alt="Ícone de usuário">
             </a>
           </li>

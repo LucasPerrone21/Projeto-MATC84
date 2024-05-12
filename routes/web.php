@@ -26,6 +26,7 @@ Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('registerForm');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
 Route::post('/login', [LoginController::class, 'login'])->name('loginForm');
+Route::get('/usuario-perfil', 'App\Http\Controllers\UserController@showProfile');
 
 Route::get('/forgot-password', [
     LoginController::class,

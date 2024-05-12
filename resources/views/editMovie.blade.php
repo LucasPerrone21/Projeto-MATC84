@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid d-flex flex-column gap-5 px-4 px-lg-5 py-5" style="background: #1E1E1E">
     <div class="d-flex gap-2 align-items-center">
-        <img src="assets/images/ph_pencil-circle-light.svg" alt="Ícone de lápis">
+        <img src="{{ asset('assets/images/ph_pencil-circle-light.svg') }}" alt="Ícone de lápis">
         <h1 class="text-white m-0">Editar filme</h1>
     </div>
 
@@ -72,31 +72,7 @@
 </div>
 
 <script>
-    var loadFile = function(event) {
-      var image = document.getElementById('movieImage');
-      image.src = URL.createObjectURL(event.target.files[0]);
-    };
-
-    var resetForm = function() {
-      document.getElementById('movieForm').reset();
-      document.getElementById('movieImage').src = 'assets/images/preview_img.svg';
-    };
-
-
-    var showAlert = function(message, type) {
-        var alertContainer = document.getElementById('alertContainer');
-        alertContainer.classList.remove('d-none');
-        alertContainer.innerHTML = `
-            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        `;
-    };
-
-    document.getElementById('errorAlert').addEventListener('closed.bs.alert', function () {
-        document.getElementById('alertContainer').classList.add('d-none');
-    });
+ 
 </script>
 
 @endsection
