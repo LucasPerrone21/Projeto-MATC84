@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+            $table->unique(['user_id', 'movie_id'], 'NoDuplicates');
             $table->timestamps();
         });
         Schema::create('past_rent_movie_user_link', function (Blueprint $table) {
