@@ -19,7 +19,7 @@ class Movie extends Model
 
     public function users_renting()
     {
-        return $this->belongsToMany(User::class, 'rent_movie_user_link', 'movie_id', 'user_id');
+        return $this->belongsToMany(User::class, 'current_rent_movie_user_link', 'movie_id', 'user_id');
     }
 
     public function users_previously_rented()

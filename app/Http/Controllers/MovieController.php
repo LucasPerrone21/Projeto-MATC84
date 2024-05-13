@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Database\UniqueConstraintViolationException;
 use App\Models\Movie;
 use App\Http\Requests\MovieRequest;
 use App\Http\Requests\MovieEditRequest;
@@ -100,18 +101,28 @@ class MovieController extends Controller
     {
         $user = auth()->user();
         if (!$user) {
-            return response()->json(['error' => 'Unauthorized.', 'success' => false, 'redirect' => false], 401);
+            return response()->json(['error' => 'Unauthorized.', 'success' => false], 401);
         }
-        if (!$movie) {
-            return response()->json(['error' => 'Filme não encontrado.', 'success' => false, 'redirect' => false], 404);
-        }
-        // insert into current_rent_movie_user_link a new row with the user_id and movie_id, but first check if the user isn't already renting the movie
         try {
-            $user->movies()->attach($movie->id);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'O usuário já está alugando esse filme.', 'success' => false, 'redirect' => false], 400);
+            $user->movies_renting()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
+        } catch (UniqueConstraintViolationException $e) {
+            return response()->json(['error' => 'O usuário já está alugando esse filme.', 'success' => false], 400);
         }
-        return response()->json(['error' => null, 'success' => true, 'redirect' => true], 200);
+        return response()->json(['error' => null, 'success' => true], 200);
+    }
+
+    public function return_movie(Movie $movie): JsonResponse
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized.', 'success' => false], 401);
+        }
+        $detached = $user->movies_renting()->detach($movie->id);
+        if (!$detached) {
+            return response()->json(['error' => 'O usuário não está alugando esse filme.', 'success' => false], 400);
+        }
+        $user->movies_previously_rented()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
+        return response()->json(['error' => null, 'success' => true], 200);
     }
 
 }

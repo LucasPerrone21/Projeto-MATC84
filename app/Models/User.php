@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function movies_renting()
     {
-        return $this->belongsToMany(Movie::class, 'rent_movie_user_link', 'user_id', 'movie_id');
+        return $this->belongsToMany(Movie::class, 'current_rent_movie_user_link', 'user_id', 'movie_id');
     }
 
     public function movies_previously_rented()

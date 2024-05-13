@@ -28,7 +28,8 @@ Route::post('/cadastro', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
 Route::post('/login', [LoginController::class, 'login'])->name('loginForm');
 
-Route::post('/alugar-filme/{id}', [MovieController::class, 'rent_movie'])->name('rent.create');
+Route::post('/alugar-filme/{movie}', [MovieController::class, 'rent_movie'])->name('rent.create');
+Route::post('/devolver-filme/{movie}', [MovieController::class, 'return_movie'])->name('rent.destroy');
 
 Route::get('/forgot-password', [
     LoginController::class,
