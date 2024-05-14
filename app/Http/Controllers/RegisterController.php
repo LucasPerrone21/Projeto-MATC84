@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
@@ -46,8 +47,31 @@ class RegisterController extends Controller
         $user->is_admin = False;
 
         $user->save();
-       
+
 
         return redirect(route('loginPage'));
+    }
+
+    public function delete(Request $request): JsonResponse
+    {
+        $user_to_delete = null;
+        $redirect = true;
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized.', 'success' => false, 'redirect' => false], 401);
+        } elseif ($user->is_admin) {
+            $redirect = $request->id != $user->id;
+            $user_to_delete = User::where('id', $request->id)->first();
+            if (!$user_to_delete) {
+                return response()->json(['error' => 'Usuário não encontrado.', 'success' => false, 'redirect' => false], 404);
+            }
+        } elseif ($request->id != $user->id) {
+            return response()->json(['error' => 'Usuário não pode deletar outro usuário.', 'success' => false, 'redirect' => false], 403);
+        } else {
+            $user_to_delete = $user;
+        }
+        $user_to_delete->delete();
+        $request->session()->invalidate();
+        return response()->json(['error' => null, 'success' => true, 'redirect' => $redirect], 200);
     }
 }
