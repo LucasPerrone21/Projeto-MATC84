@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
+use App\Models\User;
+
+class UserController extends Controller
+{
+    public function showProfileUser()
+    {
+
+        // $user = Auth::user();
+        // $userName = $user->name;
+        // $userEmail = $user->email;
+    //    return view('profileUser', compact('userName', 'userEmail'));
+    return view('profileUser');
+    }
+    public function showProfileAdm()
+    {
+    return view('profileAdm');
+    }
+}
