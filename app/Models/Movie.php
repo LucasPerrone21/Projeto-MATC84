@@ -16,5 +16,15 @@ class Movie extends Model
         'image',
         'image_type'
     ];
+
+    public function users_renting()
+    {
+        return $this->belongsToMany(User::class, 'current_rent_movie_user_link', 'movie_id', 'user_id');
+    }
+
+    public function users_previously_rented()
+    {
+        return $this->belongsToMany(User::class, 'past_rent_movie_user_link', 'movie_id', 'user_id');
+    }
 }
 

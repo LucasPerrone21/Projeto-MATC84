@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function movies_renting()
+    {
+        return $this->belongsToMany(Movie::class, 'current_rent_movie_user_link', 'user_id', 'movie_id');
+    }
+
+    public function movies_previously_rented()
+    {
+        return $this->belongsToMany(Movie::class, 'past_rent_movie_user_link', 'user_id', 'movie_id');
+    }
 }
