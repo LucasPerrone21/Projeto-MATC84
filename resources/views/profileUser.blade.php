@@ -12,12 +12,12 @@
             <form class="row g-2" id="userForm">
                 <div class="col-md-7">
                   <label for="inputEmail" class="form-label" style="color: #fff;">Seu email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email"   value="Seu email" required>>
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email"   value="{{ Auth::user()->email }}" required>>
                 </div>
 
                 <div class="col-md-7">
                     <label for="inpurName" class="form-label" style="color: #fff;">Seu nome</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Digite o seu nome"   value="Seu nome" required>>
+                    <input type="text" class="form-control" id="inputName" placeholder="Digite o seu nome" value="{{ Auth::user()->name }}" required>>
                 </div>
 
 
