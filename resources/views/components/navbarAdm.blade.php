@@ -25,9 +25,8 @@
 
                 <li class="nav-item">
                     <a class="nav-link d-flex gap-1" href="/adm-perfil">
-                        < class="nav-link text-white fw-bold">Bem vindo, {{ Auth::user()->name }}
-                    </a>
-                    <img class="img-fluid" src="assets/images/person-fill.svg" alt="Ícone de usuário">
+                        <span class="nav-link text-white fw-bold">Bem vindo, {{ Auth::user()->name }}</span>
+                        <img class="img-fluid" src="assets/images/person-fill.svg" alt="Ícone de usuário">
                     </a>
                 </li>
 

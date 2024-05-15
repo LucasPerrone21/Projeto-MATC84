@@ -27,7 +27,11 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (auth()->attempt($credentials)) {
-            return redirect('/usuario');
+            if(auth()->user()->is_admin == 0){
+                return redirect('/usuario');
+            }else{
+                return redirect('/administrador');
+            }
         }
         return back()->withErrors([
             'email' => 'E-mail ou senha incorretos.',
