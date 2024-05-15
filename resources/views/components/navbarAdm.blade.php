@@ -24,7 +24,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link d-flex gap-1" href="/perfil">
+                    <a class="nav-link d-flex gap-1" href="/perfil" data-toggle="tooltip" data-placement="bottom" title="Editar Perfil">
                         <span class="nav-link text-white fw-bold">Bem vindo, {{ Auth::user()->name }}</span>
                         <img class="img-fluid" src="assets/images/person-fill.svg" alt="Ícone de usuário">
                     </a>

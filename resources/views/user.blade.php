@@ -28,7 +28,7 @@
     </div>
     <div class="d-flex gap-5 flex-wrap justify-content-center">
         @foreach(Auth::user()->movies_renting()->get() as $movie)
-            <x-movie-card-user :movie="$movie" />
+            <x-movie-card-user-rented :movie="$movie" />
         @endforeach
 
     </div>
