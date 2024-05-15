@@ -14,7 +14,9 @@ echo '<img src="data:' . $movie->image_type . ';base64,' . base64_encode($movie-
         </p>
 
         <div class="d-flex gap-3">
-            <a href="#" class="btn btn-primary" style="background: #4248F2 !important">Alugar</a>
+            <form action="{{ route('rent.create', ['movie' => $movie]) }}" method="post">
+            <button type="submit" class="btn btn-primary" style="background: #4248F2 !important">Alugar</button>
+            </form>
         </div>
     </div>
 </div>

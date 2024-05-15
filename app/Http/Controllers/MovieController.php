@@ -97,7 +97,7 @@ class MovieController extends Controller
         return redirect(to: 'administrador')->with('message', 'Filme atualizado com sucesso!');
     }
 
-    public function rent_movie(Movie $movie): JsonResponse
+    public function rent_movie(Movie $movie)
     {
         $user = auth()->user();
         if (!$user) {
@@ -106,9 +106,13 @@ class MovieController extends Controller
         try {
             $user->movies_renting()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
         } catch (UniqueConstraintViolationException $e) {
-            return response()->json(['error' => 'O usuário já está alugando esse filme.', 'success' => false], 400);
+            
+            return redirect()->back()->with('message', 'O usuário já está alugando esse filme.');  
+            
+            
         }
-        return response()->json(['error' => null, 'success' => true], 200);
+
+        return redirect()->back()->with('message', 'Filme alugado com sucesso.');  
     }
 
     public function return_movie(Movie $movie): JsonResponse
