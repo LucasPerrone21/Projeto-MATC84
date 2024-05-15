@@ -67,9 +67,9 @@ class MovieController extends Controller
 
     public function indexUser()
     {
-        $movie = $this->objMovie->all();
+        $movies = $this->objMovie->all();
 
-        return view('user', compact('movie'));
+        return view('user', compact('movies'));
     }
 
     public function update(MovieEditRequest $request, $id)
