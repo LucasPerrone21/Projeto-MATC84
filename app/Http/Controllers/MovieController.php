@@ -112,7 +112,7 @@ class MovieController extends Controller
             
         }
 
-        return redirect()->back()->with('message', 'Filme alugado com sucesso.');  
+        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');  
     }
 
     public function return_movie(Movie $movie): JsonResponse
