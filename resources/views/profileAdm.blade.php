@@ -69,7 +69,11 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <a href="/login" class="btn btn-danger" role="button">Excluir</a>
+                    <form action="{{ url('/usuario/delete', Auth::user()->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
                   </div>
                 </div>
               </div>

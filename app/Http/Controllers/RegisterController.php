@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return redirect(route('loginPage'));
     }
 
-    public function delete(Request $request): JsonResponse
+    public function delete(Request $request)
     {
         $user_to_delete = null;
         $redirect = true;
@@ -63,15 +63,15 @@ class RegisterController extends Controller
             $redirect = $request->id != $user->id;
             $user_to_delete = User::where('id', $request->id)->first();
             if (!$user_to_delete) {
-                return response()->json(['error' => 'Usuário não encontrado.', 'success' => false, 'redirect' => false], 404);
+                return redirect()->back()->with('message', 'Usuário não encontrado.'); 
             }
         } elseif ($request->id != $user->id) {
-            return response()->json(['error' => 'Usuário não pode deletar outro usuário.', 'success' => false, 'redirect' => false], 403);
+            return redirect()->back()->with('message', 'Usuário não pode deletar outro usuário.'); 
         } else {
             $user_to_delete = $user;
         }
         $user_to_delete->delete();
         $request->session()->invalidate();
-        return response()->json(['error' => null, 'success' => true, 'redirect' => $redirect], 200);
+        return redirect('login');
     }
 }

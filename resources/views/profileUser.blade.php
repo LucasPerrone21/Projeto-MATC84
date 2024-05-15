@@ -24,7 +24,7 @@
                 <div class="col-12 d-flex gap-4">
                   <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal" style="background: #4248F2 !important">Atualizar informações</button>
                   <button class="btn btn-danger" data-toggle="modal" data-target="#deleteProfileModal"> Excluir conta </button>
-                  <a href="/administrador" class="btn btn-secondary" role="button">Cancelar</a>
+                  <a href="/usuario" class="btn btn-secondary" role="button">Cancelar</a>
                 </div>
             </form>
         </div>
@@ -69,7 +69,11 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <a href="/login" class="btn btn-danger" role="button">Excluir</a>
+                    <form action="{{ url('/usuario/delete', Auth::user()->id) }}" method="post">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
                   </div>
                 </div>
               </div>
