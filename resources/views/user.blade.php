@@ -12,9 +12,9 @@
 
     <div class="d-flex gap-5 flex-wrap justify-content-center">
 
-        @foreach($movies as $movie)
+        @foreach($movie as $movies)
 
-            <x-movie-card-user :movie="$movie" />
+            <x-movie-card-user :movie="$movies" />
 
         @endforeach
 

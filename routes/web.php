@@ -5,18 +5,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('login');
-// });
-// Route::get('/administrador', function () {
-//     return view('home');
-// });
+
 Route::redirect('/', '/login');
 
 
 Route::get('/usuario', 'App\Http\Controllers\MovieController@indexUser')->name('user.index');
-
-Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
 Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
 Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');

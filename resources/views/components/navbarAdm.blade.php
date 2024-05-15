@@ -12,11 +12,11 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav gap-5 align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link active text-white fw-bold" aria-current="page" href="/administrador">Home</a>
+                    <a class="nav-link active text-white fw-bold" aria-current="page" href="/usuario">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="/administrador#catalogo">Catálogo de filmes</a>
+                    <a class="nav-link text-white fw-bold" href="/usuario#catalogo">Catálogo de filmes</a>
                 </li>
 
                 <li class="nav-item">
@@ -25,8 +25,9 @@
 
                 <li class="nav-item">
                     <a class="nav-link d-flex gap-1" href="#">
-                        < class="nav-link text-white fw-bold">Bem vindo, {{ Auth::user()->name }}
-                    </a>
+                        <span class="nav-link text-white fw-bold">Bem vindo, {{ Auth::user()->name }}
+
+                        </span>
                     <img class="img-fluid" src="assets/images/person-fill.svg" alt="Ícone de usuário">
                     </a>
                 </li>

@@ -45,7 +45,7 @@ class MovieController extends Controller
         ]);
 
         if ($movies) {
-            return redirect(to: 'administrador')->with('message', 'Filme cadastrado com sucesso!');
+            return redirect(to: 'usuario')->with('message', 'Filme cadastrado com sucesso!');
         }
 
     }
@@ -54,7 +54,7 @@ class MovieController extends Controller
     {
         $del = Movie::find($id);
         $del->delete();
-        return redirect('administrador')->with('message', 'Filme apagado com sucesso!');
+        return redirect('usuario')->with('message', 'Filme apagado com sucesso!');
     }
 
 
@@ -69,6 +69,11 @@ class MovieController extends Controller
     {
         $movie = $this->objMovie->all();
 
+        $isAdmin = auth()->user()->is_admin;
+
+        if ($isAdmin) {
+            return view('admin', compact('movie'));
+        }
         return view('user', compact('movie'));
     }
 
@@ -94,35 +99,35 @@ class MovieController extends Controller
 
 
 
-        return redirect(to: 'administrador')->with('message', 'Filme atualizado com sucesso!');
+        return redirect(to: 'usuario')->with('message', 'Filme atualizado com sucesso!');
     }
 
-    public function rent_movie(Movie $movie): JsonResponse
+    public function rent_movie(Movie $movie)
     {
         $user = auth()->user();
         if (!$user) {
-            return response()->json(['error' => 'Unauthorized.', 'success' => false], 401);
+            return view('login');
         }
         try {
             $user->movies_renting()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
         } catch (UniqueConstraintViolationException $e) {
-            return response()->json(['error' => 'O usuário já está alugando esse filme.', 'success' => false], 400);
+            return redirect()->back()->with('error', 'Você já está alugando esse filme.');
         }
-        return response()->json(['error' => null, 'success' => true], 200);
+        return redirect()->back()->with('success', 'Filme alugado com sucesso.');
     }
 
-    public function return_movie(Movie $movie): JsonResponse
+    public function return_movie(Movie $movie)
     {
         $user = auth()->user();
         if (!$user) {
-            return response()->json(['error' => 'Unauthorized.', 'success' => false], 401);
+            return view('login');
         }
         $detached = $user->movies_renting()->detach($movie->id);
         if (!$detached) {
-            return response()->json(['error' => 'O usuário não está alugando esse filme.', 'success' => false], 400);
+            return redirect()->back()->with('error', 'Você não está alugando esse filme.');
         }
         $user->movies_previously_rented()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
-        return response()->json(['error' => null, 'success' => true], 200);
+        return redirect()->back()->with('success', 'Filme devolvido com sucesso.');
     }
 
 }
