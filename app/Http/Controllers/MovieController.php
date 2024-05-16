@@ -28,8 +28,14 @@ class MovieController extends Controller
     public function index()
     {
         $movie = $this->objMovie->all();
-
-        return view('admin', compact('movie'));
+        $user = auth()->user();
+        if ($user){
+            if ($user->is_admin){
+                return view('admin', compact('movie'));
+            }
+            return view('user', compact('movie'));
+        }
+        return redirect('login');
     }
 
     public function store(MovieRequest $request)
@@ -69,7 +75,7 @@ class MovieController extends Controller
     {
         $movies = $this->objMovie->all();
 
-        return view('user', compact('movies'));
+        
     }
 
     public function update(MovieEditRequest $request, $id)

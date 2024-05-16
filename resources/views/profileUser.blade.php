@@ -9,21 +9,23 @@
 
     <div class="row d-flex flex-column flex-lg-row gap-4 gap-lg-0">
         <div class="col-12 col-lg-8">
-            <form class="row g-2" id="userForm">
+            <form method='POST' action="{{ url('/usuario/update', Auth::user()->id) }}" class="row g-2" id="userForm">
+              @csrf
+              @method('PUT')
                 <div class="col-md-7">
                   <label for="inputEmail" class="form-label" style="color: #fff;">Seu email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Digite o seu email"   value="{{ Auth::user()->email }}" required>>
+                  <input type="email" class="form-control" name='email' id="inputEmail" placeholder="Digite o seu email"   value="{{ Auth::user()->email }}" required>
                 </div>
 
                 <div class="col-md-7">
                     <label for="inpurName" class="form-label" style="color: #fff;">Seu nome</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Digite o seu nome" value="{{ Auth::user()->name }}" required>>
+                    <input type="text" class="form-control" name='name' id="inputName" placeholder="Digite o seu nome" value="{{ Auth::user()->name }}" required>
                 </div>
 
 
                 <div class="col-12 d-flex gap-4">
                   <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal" style="background: #4248F2 !important">Atualizar informações</button>
-                  <button class="btn btn-danger" data-toggle="modal" data-target="#deleteProfileModal"> Excluir conta </button>
+                  <a class="btn btn-danger" data-toggle="modal" data-target="#deleteProfileModal"> Excluir conta </a>
                   <a href="/usuario" class="btn btn-secondary" role="button">Cancelar</a>
                 </div>
             </form>
@@ -35,7 +37,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -53,7 +55,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="deleteProfileModal" tabindex="-1" role="dialog" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
