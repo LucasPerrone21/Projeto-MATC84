@@ -5,32 +5,26 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('login');
-// });
-// Route::get('/administrador', function () {
-//     return view('home');
-// });
+
 Route::redirect('/', '/login');
 
 
-Route::get('/usuario', 'App\Http\Controllers\MovieController@indexUser')->name('user.index');
+Route::get('/usuario', 'App\Http\Controllers\MovieController@index')->name('user.index');
 
-Route::get('/administrador', 'App\Http\Controllers\MovieController@index');
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
 Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
-Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
-Route::get('/usuario-perfil', 'App\Http\Controllers\UserController@showProfileUser');
-Route::get('/adm-perfil', 'App\Http\Controllers\UserController@showProfileAdm');
+Route::get('/perfil', 'App\Http\Controllers\UserController@showProfile');
 Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
 Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy');
+Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
+
+Route::put('usuario/update/{id}', 'App\Http\Controllers\UserController@update');
 
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('registerForm');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
 Route::post('/login', [LoginController::class, 'login'])->name('loginForm');
 Route::delete('/usuario/delete/{id}', [RegisterController::class, 'delete'])->name('deleteUser');
-
 Route::post('/alugar-filme/{movie}', [MovieController::class, 'rent_movie'])->name('rent.create');
 Route::post('/devolver-filme/{movie}', [MovieController::class, 'return_movie'])->name('rent.destroy');
 

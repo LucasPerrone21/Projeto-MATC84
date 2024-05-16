@@ -8,17 +8,29 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function showProfileUser()
+    public function showProfile()
     {
-
-        // $user = Auth::user();
-        // $userName = $user->name;
-        // $userEmail = $user->email;
-    //    return view('profileUser', compact('userName', 'userEmail'));
-    return view('profileUser');
+        $user = Auth::user();
+        if ($user->is_admin) {
+            return view('profileAdm');
+        }
+        else {
+            return view('profileUser');
+        }
+    return redirect('login');
     }
-    public function showProfileAdm()
+
+    public function update(Request $request, $id)
     {
-    return view('profileAdm');
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        try {
+            $user->save();
+            return redirect('usuario');
+        }
+        catch (\Exception $e) {
+            return redirect('perfil')->with('error', 'Erro ao atualizar usuário');
+        }
     }
 }
