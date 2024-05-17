@@ -20,6 +20,8 @@ Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
 
 Route::put('usuario/update/{id}', 'App\Http\Controllers\UserController@update');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('registerForm');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
@@ -44,6 +46,6 @@ Route::get('/reset-password/{token}', [
 ])->middleware('guest')->name('password.reset');
 
 Route::post(
-    'reset-password',
+    'reset-password/{token}',
     [LoginController::class, 'updatePassword']
 )->middleware('guest')->name('password.update');

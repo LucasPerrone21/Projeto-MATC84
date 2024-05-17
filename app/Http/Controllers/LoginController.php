@@ -54,9 +54,18 @@ class LoginController extends Controller
 
     public function sendResetToken(Request $request)
     {
+        
         $request->validate([
             'email' => 'required|email|exists:users,email',
+        ], [
+            'email.exists' => 'Email inválido.',
         ]);
+
+        if (!$request->email) {
+            return back()->withErrors([
+                'token' => 'E-mail inválido.',
+            ]);
+        }
 
         $status = Password::sendResetLink(
             $request->only('email')
