@@ -121,7 +121,7 @@ class MovieController extends Controller
         return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');  
     }
 
-    public function return_movie(Movie $movie): JsonResponse
+    public function return_movie(Movie $movie)
     {
         $user = auth()->user();
         if (!$user) {
@@ -132,7 +132,7 @@ class MovieController extends Controller
             return response()->json(['error' => 'O usuário não está alugando esse filme.', 'success' => false], 400);
         }
         $user->movies_previously_rented()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
-        return response()->json(['error' => null, 'success' => true], 200);
+        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');  
     }
 
 }
