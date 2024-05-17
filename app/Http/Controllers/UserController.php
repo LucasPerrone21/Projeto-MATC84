@@ -19,7 +19,6 @@ class UserController extends Controller
         } else {
             return view('profileUser');
         }
-        return redirect('login');
     }
 
     public function update(Request $request, $id)
