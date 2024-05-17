@@ -51,7 +51,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">Cancelar</button>
-                                    <a href="/login" class="btn btn-danger" role="button">Sair</a>
+                                    <a href="/logout" class="btn btn-danger" role="button">Sair</a>
                                 </div>
                             </div>
                         </div>
