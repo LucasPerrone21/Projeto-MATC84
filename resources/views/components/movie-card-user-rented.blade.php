@@ -14,12 +14,12 @@
       </p>
 
       <div class="d-flex gap-3">
-        <button type="button" class="btn btn-danger border-0" data-toggle="modal" data-target="#DeleteConfirmModal"> Devolver </button>
+        <button type="button" class="btn btn-danger border-0" data-toggle="modal" data-target="#DeleteConfirmModal{{$movie->id}}"> Devolver </button>
       </div>
     </div>
 </div>
 
-<div class="modal fade" id="DeleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="DeleteConfirmModalTitle" aria-hidden="true">
+<div class="modal fade" id="DeleteConfirmModal{{$movie->id}}" tabindex="-1" role="dialog" aria-labelledby="DeleteConfirmModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -33,7 +33,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <a href="/usuario" class="btn btn-danger" role="button">Devolver</a>
+        <form action="{{ url('/devolver-filme', $movie) }}" method="post">
+          @csrf
+          <button type="submit" class="btn btn-danger">Devolver</button>
+        </form>
       </div>
     </div>
   </div>
