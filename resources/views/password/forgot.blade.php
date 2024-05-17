@@ -44,8 +44,8 @@
         <div class="d-flex justify-content-between align-items-center" style="width: 360px;">
             <i class="bi bi-chevron-compact-left fs-2 text-white" style="margin-right: 4.5em;"></i>
             <div class="carousel-indicators" style="margin-bottom: 7em;">
-                <button type="button" data-bs-target="#" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#" data-bs-slide-to="1" class="active" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#" data-bs-slide-to="0" aria-current="true" class="active" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#" data-bs-slide-to="1" aria-label="Slide 2"></button>
             </div>
             <i class="bi bi-chevron-compact-right fs-2 text-white" style="margin-left: 4em;"></i>
         </div>

@@ -13,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
   <link rel="stylesheet" href="/assets/css/style.css">
 
   <title>@yield('title')</title>
@@ -21,7 +20,7 @@
 <body>
     <div class="container-fluid d-flex flex-column gap-5 px-4 px-lg-5 py-5" style="background: #191919">
         <a class="navbar-brand d-flex justify-content-center align-items-center" href="#">
-            <img src="assets/images/movie_club_logo.svg" width="375px" height="79px" alt="Logo do Movie Club">
+            <img src="{{ asset('assets/images/movie_club_logo.svg') }}" width="375px" height="79px" alt="Logo do Movie Club">
         </a>
         <main>
             @yield('content')
