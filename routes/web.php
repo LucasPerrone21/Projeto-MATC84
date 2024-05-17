@@ -13,7 +13,7 @@ Route::get('/usuario', 'App\Http\Controllers\MovieController@index')->name('user
 
 Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
 Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
-Route::get('/perfil', 'App\Http\Controllers\UserController@showProfile');
+Route::get('/perfil', 'App\Http\Controllers\UserController@showProfile')->name('profile');
 Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
 Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy');
 Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
