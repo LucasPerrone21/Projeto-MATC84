@@ -14,13 +14,15 @@ class ResetPasswordNotification extends Notification
     use Queueable;
 
     public $token;
+    public $email;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($token)
+    public function __construct($token, $email)
     {
         $this->token = $token;
+        $this->email = $email;
     }
 
     /**
@@ -43,7 +45,7 @@ class ResetPasswordNotification extends Notification
 
         return (new MailMessage)
                     ->subject('Instruções de redefinição de senha')
-                    ->markdown('emails.reset_password', ['url' => $url]);
+                    ->markdown('emails.reset_password', ['url' => $url, 'email' => $this->email]);
     }
 
     /**

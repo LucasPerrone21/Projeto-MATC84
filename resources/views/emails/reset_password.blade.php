@@ -1,6 +1,6 @@
 @component('mail::message')
 <div style="text-align: center;">
-    <img src="{{ asset('assets/images/movie_club_logo.svg') }}" width="150px" height="31px" alt="Logo do Movie Club">
+    <img src="{{ asset('assets/images/movie_club_logo.svg') }}" style="max-width: 50%; height: auto;" alt="Logo do Movie Club">
 </div>
 
 # Redefinição de Senha
