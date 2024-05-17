@@ -56,9 +56,3 @@
 
 @endsection
 
- <!-- Essa view recebe o argumento $token e um query param email -->
-    <!-- Essa view deve conter um form contendo os campos password e password_confirmation,
-    além de um campo hidden contendo $token -->
-    <!-- O form deve ser enviado para a rota password.reset -->
-    <!-- O form deve conter o token csrf -->
-    <!-- O form deve conter um botão de submit -->
