@@ -11,14 +11,14 @@ Route::redirect('/', '/login');
 
 Route::get('/usuario', 'App\Http\Controllers\MovieController@index')->name('user.index');
 
-Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create');
+Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create')->name("create.movie");
 Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
 Route::get('/perfil', 'App\Http\Controllers\UserController@showProfile')->name('profile');
-Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store');
-Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy');
-Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update');
+Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store')->name("store.movie");
+Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy')->name("delete.movie");
+Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update')->name("update.movie");
 
-Route::put('usuario/update/{id}', 'App\Http\Controllers\UserController@update');
+Route::put('usuario/update/{id}', 'App\Http\Controllers\UserController@update')->name("update.user");
 
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('registerForm');
