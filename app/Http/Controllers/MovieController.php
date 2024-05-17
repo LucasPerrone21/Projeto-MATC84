@@ -58,7 +58,7 @@ class MovieController extends Controller
         ]);
 
         if ($movies) {
-            return redirect(to: 'administrador')->with('message', 'Filme cadastrado com sucesso!');
+            return redirect(to: 'usuario')->with('message', 'Filme cadastrado com sucesso!');
         }
 
     }
@@ -67,7 +67,7 @@ class MovieController extends Controller
     {
         $del = Movie::find($id);
         $del->delete();
-        return redirect('administrador')->with('message', 'Filme apagado com sucesso!');
+        return redirect('usuario')->with('message', 'Filme apagado com sucesso!');
     }
 
 
@@ -76,13 +76,6 @@ class MovieController extends Controller
         $movie = $this->objMovie->find($id);
 
         return view('editMovie', compact('movie'));
-    }
-
-    public function indexUser()
-    {
-        $movies = $this->objMovie->all();
-
-
     }
 
     public function update(MovieEditRequest $request, $id)
@@ -107,7 +100,7 @@ class MovieController extends Controller
 
 
 
-        return redirect(to: 'administrador')->with('message', 'Filme atualizado com sucesso!');
+        return redirect(to: 'usuario')->with('message', 'Filme atualizado com sucesso!');
     }
 
     public function rent_movie(Movie $movie)

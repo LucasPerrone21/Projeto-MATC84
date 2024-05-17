@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid d-flex flex-column gap-5 px-4 px-lg-5 py-5" style="background: #1E1E1E">
     <div class="d-flex gap-2 align-items-center">
-        <img src="assets/images/ph_pencil-circle-light.svg" alt="Ícone de lápis">
+        <img src="{{asset('assets/images/ph_pencil-circle-light.svg')}}" alt="Ícone de lápis">
         <h1 class="text-white m-0">Editar filme</h1>
     </div>
 
@@ -57,7 +57,7 @@
 
                 <div class="col-12 d-flex gap-4">
                   <button type="submit" class="btn btn-primary">Salvar</button>
-                  <a href="/administrador" class="btn btn-danger">Cancelar</a>
+                  <a href="/usuario" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>
