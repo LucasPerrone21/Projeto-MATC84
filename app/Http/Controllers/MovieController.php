@@ -22,6 +22,13 @@ class MovieController extends Controller
     }
     public function create()
     {
+        // se o usuário não for admin, redireciona para a página de usuário
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            return redirect(route('user.index'));
+        } elseif (!$user) {
+            return redirect(route('loginPage'));
+        }
         return view('createMovie');
     }
     //
@@ -29,8 +36,8 @@ class MovieController extends Controller
     {
         $movie = $this->objMovie->all();
         $user = auth()->user();
-        if ($user){
-            if ($user->is_admin){
+        if ($user) {
+            if ($user->is_admin) {
                 return view('admin', compact('movie'));
             }
             return view('user', compact('movie'));
@@ -75,7 +82,7 @@ class MovieController extends Controller
     {
         $movies = $this->objMovie->all();
 
-        
+
     }
 
     public function update(MovieEditRequest $request, $id)
@@ -112,13 +119,13 @@ class MovieController extends Controller
         try {
             $user->movies_renting()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
         } catch (UniqueConstraintViolationException $e) {
-            
-            return redirect()->back()->with('message', 'O usuário já está alugando esse filme.');  
-            
-            
+
+            return redirect()->back()->with('message', 'O usuário já está alugando esse filme.');
+
+
         }
 
-        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');  
+        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');
     }
 
     public function return_movie(Movie $movie)
@@ -132,7 +139,7 @@ class MovieController extends Controller
             return response()->json(['error' => 'O usuário não está alugando esse filme.', 'success' => false], 400);
         }
         $user->movies_previously_rented()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
-        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');  
+        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');
     }
 
 }
