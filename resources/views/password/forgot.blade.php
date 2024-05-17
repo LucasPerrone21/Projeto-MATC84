@@ -5,7 +5,7 @@
 <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh; gap: 32px">
     <div class="text-center" style="width: 360px">
         <h1 style="color: #FFFFFF; font-size: 32px; font-family: 'Inter', sans-serif; font-weight: 400">Redefina sua senha</h1>
-        <p style="color: #FFFFFF; font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 200">Enviar o link de redefinição para o email</p>
+        <p style="color: #FFFFFF; font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 200">Enviar o código para o email</p>
     </div>
     @if ($errors->any())
         <div>
@@ -37,7 +37,7 @@
                     <input type="email" id="email" name="email" placeholder="Insira seu email" style="width: 360px" required>
                 </div>
             </div>      
-                <button type="submit" class="btn btn-primary" style="background: #4248F2; width: 360px; height: 38px">ENVIAR LINK</button>
+                <button type="submit" class="btn btn-primary" style="background: #4248F2; width: 360px; height: 38px">ENVIAR CÓDIGO</button>
         </form>
     </div>
     <div class="d-flex justify-content-center align-items-center mt-3 w-100">
