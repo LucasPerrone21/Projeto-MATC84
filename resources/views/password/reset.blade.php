@@ -27,7 +27,7 @@
                     <input type="hidden" name="email" value="{{ $_GET['email'] }}">
                 </div>
                 <div class="mb-2">
-                    <label class="text-white" for="password">Senha<span style="color: #DC3545">*</span></label>
+                    <label class="text-white" for="password">Senha <span style="color: #DC3545">*</span></label>
                 </div>
                 <div class="mb-2">
                     <input type="password" id="password" name="password" placeholder="Insira a sua nova senha" style="width: 360px;">
