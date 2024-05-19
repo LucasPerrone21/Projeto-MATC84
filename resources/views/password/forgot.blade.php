@@ -43,7 +43,7 @@
     <div class="d-flex justify-content-center align-items-center mt-3 w-100">
         <div class="d-flex justify-content-between align-items-center" style="width: 360px;">
             <i class="bi bi-chevron-compact-left fs-2 text-white" style="margin-right: 4.5em;"></i>
-            <div class="carousel-indicators" style="margin-bottom: 7em;">
+            <div class="carousel-indicators" style="margin-bottom: 14vh;">
                 <button type="button" data-bs-target="#" data-bs-slide-to="0" aria-current="true" class="active" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#" data-bs-slide-to="1" aria-label="Slide 2"></button>
             </div>
