@@ -1,6 +1,6 @@
 # The Movie Club
 
-Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Araújo Santos Oliveira, Lucas Perrone RamosLuiz Cláudio Dantas Cavalcanti, Maria Fernanda Pinto da Fonseca, Mário Sérgio Brito Pires Santos e Vitor Hugo Barbosa dos Santos
+Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Araújo Santos Oliveira, Lucas Perrone Ramos, Luiz Cláudio Dantas Cavalcanti, Maria Fernanda Pinto da Fonseca, Mário Sérgio Brito Pires Santos e Vitor Hugo Barbosa dos Santos
 
 ## 1. Instruções de instalação e execução
 
@@ -13,16 +13,16 @@ Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Ar
 > O acesso ao sistema é feito a partir do fornecimento do e-mail e senha, previamente cadastrados, na tela inicial da aplicação.
 
 2. Recuperação de senha
-	
+
 > Ao acessar o link "Esqueceu a senha?" na página inicial, o usuário poderá redefinir sua senha. Basta fornecer o e-mail associado à conta e clicar no botão "Enviar código". Um código de verificação será enviado para o e-mail fornecido, permitindo a confirmação da identidade e a criação de uma nova senha.
 
 3. Edição de conta
-	
+
 > Após o usuário ser devidamente cadastrado e logado no sistema, será possível ele mudar suas informações como nome e e-mail, clicando no seu nome previamente cadastrado que aparece na header da aplicação.
 
 4. Deleção de conta
 
-> Após o usuário ser devidamente cadastrado e logado no sistema, será possível excluir permanentemente sua conta na tela de edição. Ao realizar essa ação, ele será redirecionado para a tela de login, onde poderá posteriormente realizar um novo cadastro.	
+> Após o usuário ser devidamente cadastrado e logado no sistema, será possível excluir permanentemente sua conta na tela de edição. Ao realizar essa ação, ele será redirecionado para a tela de login, onde poderá posteriormente realizar um novo cadastro.
 
 5. Visualizar filmes cadastrados
 
@@ -35,11 +35,11 @@ Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Ar
 > Após se cadastrar, o usuário terá acesso à plataforma. Para isso, basta clicar no link "Cadastre-se" disponível na página inicial. O processo é simples e requer apenas o fornecimento do nome, e-mail e uma senha, que será criptografada no banco de dados.
 
 2. Alugar filme
-	
+
 > Após o usuário cadastrado e logado na aplicação, será exibido para ele os filmes cadastrados com um botão de alugar. Ao clicá-lo, o filme será associado ao usuário e aparecerá na sessão de “Filmes Alugados”.
 
 3. Devolver filme
-   
+
 > Na página inicial do usuário será possível acessar a sessão de “Filmes Alugados”, onde aparecerão os filmes previamente locado pelo cliente, nele aparecerá as informações do filme e um botão de “Devolver”. Ao clicá-lo, o filme sairá da lista do usuário.
 
 ### **Ações do usuário administrador**
@@ -56,10 +56,124 @@ Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Ar
 
 > Ao acessar a página inicial, no card de cada filme previamente cadastrado, o administrador terá a opção de excluí-lo. Ao clicar no botão, será exibido um modal para a confirmação da ação selecionada.
 
-
 ## 3. Estrutura
 
-
-##
-
 **Explicação do código/fluxo de criação de filme:** [PHP/LARAVEL | Fluxo de criação de filme](https://youtu.be/6AwAuDcuwJc?si=WWS-dqG2ee7-0tzr)
+
+A aplicação foi desenvolvida utilizando o padrão MVC (Model-View-Controller), adotado pelo Laravel. A estrutura do projeto, pela ótica do MVC, é organizada da seguinte forma:
+
+### Models
+
+1. **User**
+
+Representa um usuário, suas credenciais e informações pessoais.
+
+Atributos:
+
+-   name: nome do usuário.
+-   email: e-mail do usuário.
+-   password: senha do usuário (criptografada).
+-   remember_token: token de autenticação.
+-   is_admin: flag que indica se o usuário é do tipo administrador.
+-   email_verified_at: data de verificação do e-mail, null enquanto não verificado.
+-   movies_renting: relação que lista os filmes que o usuário está alugando no momento.
+-   movies_previously_rented: relação que lista os filmes alugados no passado e já devolvidos pelo usuário.
+
+2. **Movie**
+
+Representa um filme e suas informações.
+
+Atributos:
+
+-   title: título do filme.
+-   gender_movie: gênero do filme (ação, comédia, drama, etc.).
+-   description: sinopse do filme.
+-   image: imagem de capa do filme (em bytes).
+-   image_type: formato de arquivo da imagem.
+-   users_renting: relação que lista os usuários que estão alugando o filme.
+
+### Views
+
+1. **CreateMovie**
+
+Formulário de cadastro de filmes.
+
+![CreateMovie](/docs/imgs/CreateMovie.png)
+
+2. **EditMovie**
+
+Formulário de edição de filmes.
+
+![EditMovie](/docs/imgs/EditMovie.png)
+
+3. **User**
+
+Catálogo de filmes do usuário comum.
+
+![User](/docs/imgs/User.png)
+
+4. **Admin**
+
+Catálogo de filmes do administrador.
+
+![Admin](/docs/imgs/Admin.png)
+
+5. **ProfileAdm**
+
+Edição de perfil do administrador.
+
+![ProfileAdm](/docs/imgs/ProfileAdm.png)
+
+6. **ProfileUser**
+
+Edição de perfil do usuário comum.
+
+![ProfileUser](/docs/imgs/ProfileUser.png)
+
+7. **Login**
+
+Formulário de login.
+
+![Login](/docs/imgs/Login.png)
+
+8. **Register**
+
+Formulário de cadastro de usuários.
+
+![Register](/docs/imgs/Register.png)
+
+9. **password.Forgot**
+
+Formulário de recuperação de senha (envio de código de verificação).
+
+![password.Forgot](/docs/imgs/password.Forgot.png)
+
+10. **password.Reset**
+
+Formulário de redefinição de senha (atribuição de nova senha).
+
+![password.Reset](/docs/imgs/password.Reset.png)
+
+### Controllers
+
+1. **LoginController**
+
+Responsável pela autenticação do usuário. Lida com as requisições de login, logout e recuperação de senha.
+
+2. **RegisterController**
+
+Responsável pelo cadastro de usuários. Lida com as requisições de cadastro e exclusão de conta.
+
+Realiza a validação dos dados fornecidos pelo usuário, criptografa a senha e salva o usuário no banco de dados.
+
+3. **MovieController**
+
+Responsável pela manipulação dos filmes. Lida com as requisições de:
+
+-   Listagem de filmes.
+-   Cadastro, edição e remoção de filmes (por administradores).
+-   Aluguel e devolução de filmes (por usuários comuns).
+
+4. **UserController**
+
+Responsável pelo perfil dos usuários. Lida com as requisições de edição de dados do usuário.

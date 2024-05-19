@@ -4,7 +4,7 @@
 
 Olá,
 
-Recebemos uma solicitação de redefinição de senha para a sua conta do <span style="color:#4248F2; font-weight: bold;">The Movie Club </span>.
+Recebemos uma solicitação de redefinição de senha para a sua conta do <span style="color:#4248F2; font-weight: bold;">The Movie Club</span>.
 
 @component('mail::button', ['url' => $url])
 Redefinir Senha

@@ -22,7 +22,6 @@ class MovieController extends Controller
     }
     public function create()
     {
-        // se o usuário não for admin, redireciona para a página de usuário
         $user = auth()->user();
         if ($user && !$user->is_admin) {
             return redirect(route('user.index'));

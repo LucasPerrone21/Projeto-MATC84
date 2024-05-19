@@ -14,7 +14,6 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        // Se o usuário já estiver logado, redireciona para a página de usuário
         if (auth()->user()) {
             $user = auth()->user();
             return $user->is_admin ? redirect(route('user.index')) : redirect(route('create.movie'));
@@ -59,7 +58,7 @@ class LoginController extends Controller
 
     public function sendResetToken(Request $request)
     {
-        
+
         $request->validate([
             'email' => 'required|email|exists:users,email',
         ], [
