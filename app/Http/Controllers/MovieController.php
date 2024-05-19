@@ -46,6 +46,12 @@ class MovieController extends Controller
 
     public function store(MovieRequest $request)
     {
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            return redirect(route('user.index'));
+        } elseif (!$user) {
+            return redirect(route('loginPage'));
+        }
         $img = file_get_contents($_FILES['image']['tmp_name']);
         $img_type = $_FILES['image']['type'];
         $movies = $this->objMovie->create([
@@ -64,6 +70,12 @@ class MovieController extends Controller
 
     public function destroy($id)
     {
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            return redirect(route('user.index'));
+        } elseif (!$user) {
+            return redirect(route('loginPage'));
+        }
         $del = Movie::find($id);
         $del->delete();
         return redirect('usuario')->with('message', 'Filme apagado com sucesso!');
@@ -72,6 +84,12 @@ class MovieController extends Controller
 
     public function edit($id)
     {
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            return redirect(route('user.index'));
+        } elseif (!$user) {
+            return redirect(route('loginPage'));
+        }
         $movie = $this->objMovie->find($id);
 
         return view('editMovie', compact('movie'));
@@ -79,6 +97,12 @@ class MovieController extends Controller
 
     public function update(MovieEditRequest $request, $id)
     {
+        $user = auth()->user();
+        if ($user && !$user->is_admin) {
+            return redirect(route('user.index'));
+        } elseif (!$user) {
+            return redirect(route('loginPage'));
+        }
         if ($_FILES['image']['tmp_name']) {
             $img = file_get_contents($_FILES['image']['tmp_name']);
             $img_type = $_FILES['image']['type'];
