@@ -5,6 +5,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
+if (env('APP_ENV') !== 'local') {
+    URL::forceScheme('https');
+}
 
 Route::redirect('/', '/login');
 
