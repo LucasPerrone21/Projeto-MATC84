@@ -42,7 +42,6 @@ Certifique-se de ter os seguintes softwares instalados:
 
 - [PHP](https://www.php.net/) >= 7.3
 - [Composer](https://getcomposer.org/)
-- [Laravel](https://laravel.com/) >= 10.x
 - [MySQL](https://www.mysql.com/) ou outro banco de dados compatível
 
 ### Passo a Passo:
