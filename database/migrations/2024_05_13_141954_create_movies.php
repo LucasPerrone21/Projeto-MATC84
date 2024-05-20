@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 
 return new class extends Migration {
@@ -14,9 +15,11 @@ return new class extends Migration {
             $table->text('description');
             $table->string('gender_movie');
             $table->timestamps();
-            $table->binary('image')->nullable();
             $table->string('image_type')->nullable();
+
         });
+
+        DB::statement('ALTER TABLE movies ADD image LONGBLOB NULL');
     }
 
     public function down(): void
