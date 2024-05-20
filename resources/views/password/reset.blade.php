@@ -16,10 +16,10 @@
             </ul>
         </div>
     @endif
-    <div class="col-md-6 register ">
+    <div class="col-md-6 register " style="position: relative; z-index: 0;">
         <form action="{{ route('password.reset', ['token' => $token]) }}" method='POST' style="width: 360px; margin: auto;">
             @csrf
-            <div class="form-group">
+            <div class="form-group" id="reset-form">
                 <div class="mb-2">
                     <input type="hidden" name="token" value="{{ $token }}">
                 </div>
@@ -30,7 +30,7 @@
                     <label class="text-white" for="password">Senha <span style="color: #DC3545">*</span></label>
                 </div>
                 <div class="mb-2">
-                    <input type="password" id="password" name="password" placeholder="Insira a sua nova senha" style="width: 360px;">
+                    <input type="password" id="password" name="password" placeholder="Insira a sua nova senha" style="width: 100%;">
                 </div>
                 <div class="mb-2">
                     <label class="text-white" for="password_confirmation">Confirmar senha <span style="color: #DC3545">*</span></label>
@@ -38,13 +38,14 @@
                 <div class="mb-2">
                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirme a sua nova senha" style="width: 360px;">
                 </div>
+                
             </div>
-            <button type="submit" class="btn btn-primary" style="background: #4248F2; width: 360px; height: 38px; margin-top: 5em;">ENVIAR SENHA</button>
+            <button type="submit" class="btn btn-primary" style="background: #4248F2; width: 360px; height: 38px; margin-top: 2em;">ENVIAR SENHA</button>
         </form>
-        <div class="d-flex justify-content-center align-items-center mt-5 w-100">
+        <div class="d-flex justify-content-center align-items-center mt-4 w-100">
             <div class="d-flex justify-content-between align-items-center" style="width: 360px;">
                 <i class="bi bi-chevron-compact-left fs-2 text-white" style="margin-right: 4.5em;"></i>
-                <div class="carousel-indicators" style="margin-bottom: 4.5em;">
+                <div class="carousel-indicators" style="margin-bottom: 2.5vh;">
                     <button type="button" data-bs-target="#" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#" data-bs-slide-to="1" class="active" aria-label="Slide 2"></button>
                 </div>
