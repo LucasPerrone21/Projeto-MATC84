@@ -40,7 +40,7 @@ Estas instruções irão guiá-lo na configuração e execução do projeto The 
 
 Certifique-se de ter os seguintes softwares instalados:
 
-- [PHP](https://www.php.net/) >= 7.3
+- [PHP](https://www.php.net/) >= 8.3
 - [Composer](https://getcomposer.org/)
 - [MySQL](https://www.mysql.com/) ou outro banco de dados compatível
 
