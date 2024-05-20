@@ -1,6 +1,15 @@
 # The Movie Club
 
-Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Araújo Santos Oliveira, Lucas Perrone Ramos, Luiz Cláudio Dantas Cavalcanti, Maria Fernanda Pinto da Fonseca, Mário Sérgio Brito Pires Santos e Vitor Hugo Barbosa dos Santos
+Integrantes:
+
+1. Helen Amanda Lima de Freitas
+2. Letícia Santos Teixeira
+3. Lucas de Araújo Santos Oliveira
+4. Lucas Perrone Ramos
+5. Luiz Cláudio Dantas Cavalcanti
+6. Maria Fernanda Pinto da Fonseca
+7. Mário Sérgio Brito Pires Santos
+8. Vitor Hugo Barbosa dos Santos
 
 ## 1. Instruções de instalação e execução
 
