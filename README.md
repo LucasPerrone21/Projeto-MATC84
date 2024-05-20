@@ -4,6 +4,64 @@ Integrantes: Helen Amanda Lima de Freitas, Letícia Santos Teixeira, Lucas de Ar
 
 ## 1. Instruções de instalação e execução
 
+Estas instruções irão guiá-lo na configuração e execução do projeto The Movie Club em sua máquina local para fins de desenvolvimento e testes.
+
+### Pré-requisitos:
+
+Certifique-se de ter os seguintes softwares instalados:
+
+- [PHP](https://www.php.net/) >= 7.3
+- [Composer](https://getcomposer.org/)
+- [Laravel](https://laravel.com/) >= 10.x
+- [MySQL](https://www.mysql.com/) ou outro banco de dados compatível
+
+### Passo a Passo:
+
+#### 1. Clone o Repositório
+
+Clone o repositório do projeto para sua máquina local usando o comando:
+
+```sh
+git clone https://github.com/LucasPerrone21/Projeto-MATC84.git
+```
+ou
+
+```
+git clone git@github.com:LucasPerrone21/Projeto-MATC84.git
+```
+
+#### 2. Navegue até o diretório padrão
+
+```
+cd Projeto-MATC84
+```
+
+#### 3. Instale as dependências do PHP
+
+```
+composer install
+```
+
+#### 3. Configure o arquivo ".env"
+
+```
+cp .env.example .env
+```
+
+Depois abra o arquivo criado e configure com seu banco de dados (MySQL de preferência) e seu servidor SMTP
+
+#### 4. Execute as migrações
+
+```
+php artisan migrate
+```
+
+#### 5. Inicie o servidor de desenvolvimento
+
+```
+php artisan serve
+```
+
 ## 2. Funcionalidades do sistema
 
 ### **Ações comuns a todos os usuários**
