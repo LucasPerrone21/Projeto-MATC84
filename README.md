@@ -25,6 +25,13 @@ Integrantes:
 7. Mário Sérgio Brito Pires Santos
 8. Vitor Hugo Barbosa dos Santos
 
+## CREDENCIAIS ADM:
+
+Email:
+```admin@example.com```
+Senha:
+```teste0102030405```
+
 ## 1. Instruções de instalação e execução
 
 Estas instruções irão guiá-lo na configuração e execução do projeto The Movie Club em sua máquina local para fins de desenvolvimento e testes.
