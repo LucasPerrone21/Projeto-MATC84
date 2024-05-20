@@ -1,4 +1,17 @@
 # The Movie Club
+<div>
+    <img src='https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white'>
+    <img src='https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white'>
+    <img src='https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white'>
+    <img src='https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white'>
+    <img src='https://img.shields.io/badge/CSS-FF9633?&style=for-the-badge&logo=css3&logoColor=white'>
+    <img src='https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white'>
+    <img src='https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white'>
+</div>
+<br>
+
+![image](https://github.com/LucasPerrone21/Projeto-MATC84/assets/84514426/939a9daa-825a-4cdd-8225-78439399ce1f)
+
 
 Integrantes:
 
