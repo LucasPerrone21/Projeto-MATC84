@@ -9,8 +9,10 @@
 </div>
 <br>
 
-![image](https://github.com/LucasPerrone21/Projeto-MATC84/assets/84514426/939a9daa-825a-4cdd-8225-78439399ce1f)
+O “The Movie Club” é um projeto idealizado para aproximar os cinéfilos dos seus filmes favoritos. A plataforma oferece um catálogo de filmes a sua disposição e permite que você alugue filmes do conforto da sua casa com apenas alguns cliques de distância.
+<br>
 
+![image](https://github.com/LucasPerrone21/Projeto-MATC84/assets/84514426/939a9daa-825a-4cdd-8225-78439399ce1f)
 
 Integrantes:
 
@@ -84,6 +86,8 @@ php artisan serve
 ```
 
 ## 2. Funcionalidades do sistema
+
+![9b743459-8ef5-42a8-b0c7-af4612d6cd5f](https://github.com/LucasPerrone21/Projeto-MATC84/assets/84514426/3bf58f53-057c-4f25-9452-e9e79df90c28)
 
 ### **Ações comuns a todos os usuários**
 
