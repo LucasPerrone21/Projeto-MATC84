@@ -138,7 +138,6 @@ class MovieController extends Controller
 
             return redirect()->back()->with('message', 'O usuário já está alugando esse filme.');
 
-
         }
 
         return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');
@@ -154,8 +153,17 @@ class MovieController extends Controller
         if (!$detached) {
             return response()->json(['error' => 'O usuário não está alugando esse filme.', 'success' => false], 400);
         }
+        $user->movies_previously_rented()->detach($movie->id);
         $user->movies_previously_rented()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
-        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');
+        $user->save();
+
+        $rating = request()->input('rating');
+
+        if ($rating) {
+            $user->movies_previously_rented()->updateExistingPivot($movie->id, ['rating' => $rating]);
+        }
+
+        return redirect('usuario#meusFilmes')->with('message', 'Filme devolvido com sucesso.');
     }
 
 }

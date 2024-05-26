@@ -33,13 +33,33 @@ echo '<img src="data:' . $movie->image_type . ';base64,' . base64_encode($movie-
             <div class="modal-body">
                 Tem certeza que deseja devolver este filme?
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form action="{{ url('/devolver-filme', $movie) }}" method="post">
+            <form action="{{ url('/devolver-filme', $movie) }}" method="post">
+                <!-- radio to rate the movie from 1 to 5, displayed horizontally, with 5px between the radios  -->
+                <label for="rating" class="modal-body">Selecione a nota que deseja atribuir a ele:</label>
+                <div class="form-check
+                    @error('rating') is-invalid @enderror" style="display: flex; gap: 10px;">
+                    <input class="form-check
+                        @error('rating') is-invalid @enderror" type="radio" name="rating" value="1" required> 1
+                    <input class="form-check
+                        @error('rating') is-invalid @enderror" type="radio" name="rating" value="2" required> 2
+                    <input class="form-check
+                        @error('rating') is-invalid @enderror" type="radio" name="rating" value="3" required> 3
+                    <input class="form-check
+                        @error('rating') is-invalid @enderror" type="radio" name="rating" value="4" required> 4
+                    <input class="form-check
+                        @error('rating') is-invalid @enderror" type="radio" name="rating" value="5" required> 5
+                    @error('rating')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     @csrf
                     <button type="submit" class="btn btn-danger">Devolver</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
