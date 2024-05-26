@@ -12,16 +12,15 @@ if (env('APP_ENV') !== 'local') {
 Route::redirect('/', '/login');
 
 
-Route::get('/usuario', 'App\Http\Controllers\MovieController@index')->name('user.index');
+Route::get('/usuario', [MovieController::class, 'index'])->name('user.index');
 
-Route::get('/cadastrar-filme', 'App\Http\Controllers\MovieController@create')->name("create.movie");
-Route::get('/editar-filme/{id}', 'App\Http\Controllers\MovieController@edit')->name('edit.movie');
-Route::get('/perfil', 'App\Http\Controllers\UserController@showProfile')->name('profile');
-Route::post('/cadastrar-filme', 'App\Http\Controllers\MovieController@store')->name("store.movie");
-Route::delete('/excluir-filmes/{id}', 'App\Http\Controllers\MovieController@destroy')->name("delete.movie");
-Route::put('/update/{id}', 'App\Http\Controllers\MovieController@update')->name("update.movie");
-
-Route::put('usuario/update/{id}', 'App\Http\Controllers\UserController@update')->name("update.user");
+Route::get('/cadastrar-filme', [MovieController::class, 'create'])->name('create.movie');
+Route::get('/editar-filme/{id}', [MovieController::class, 'edit'])->name('edit.movie');
+Route::get('/perfil', [UserController::class, 'showProfile'])->name('profile');
+Route::post('/cadastrar-filme', [MovieController::class, 'store'])->name('store.movie');
+Route::delete('/excluir-filmes/{id}', [MovieController::class, 'destroy'])->name('delete.movie');
+Route::put('/update/{id}', [MovieController::class, 'update'])->name('update.movie');
+Route::put('usuario/update/{id}', [UserController::class, 'update'])->name('update.user');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
