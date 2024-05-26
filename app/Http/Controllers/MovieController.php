@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Database\UniqueConstraintViolationException;
 use App\Models\Movie;
@@ -130,7 +131,7 @@ class MovieController extends Controller
     {
         $user = auth()->user();
         if (!$user) {
-            return response()->json(['error' => 'Unauthorized.', 'success' => false], 401);
+            return redirect('login', 401);
         }
         try {
             $user->movies_renting()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
@@ -140,30 +141,30 @@ class MovieController extends Controller
 
         }
 
-        return redirect('usuario#meusFilmes')->with('message', 'Filme alugado com sucesso.');
+        return redirect('usuario#meusFilmes');
     }
 
-    public function return_movie(Movie $movie)
+    public function return_movie(Movie $movie): RedirectResponse
     {
         $user = auth()->user();
         if (!$user) {
-            return response()->json(['error' => 'Unauthorized.', 'success' => false], 401);
+            return redirect('login', 401);
+        }
+        $rating = request()->input('rating');
+        if (!$rating || $rating < 1 || $rating > 5) {
+            return redirect()->back()->with('message', 'Avaliação inválida.');
         }
         $detached = $user->movies_renting()->detach($movie->id);
         if (!$detached) {
-            return response()->json(['error' => 'O usuário não está alugando esse filme.', 'success' => false], 400);
+            return redirect()->back()->with('message', 'O usuário não está alugando esse filme.');
         }
         $user->movies_previously_rented()->detach($movie->id);
         $user->movies_previously_rented()->attach($movie->id, ['created_at' => now(), 'updated_at' => now()]);
+
+        $user->movies_previously_rented()->updateExistingPivot($movie->id, ['rating' => $rating]);
         $user->save();
 
-        $rating = request()->input('rating');
-
-        if ($rating) {
-            $user->movies_previously_rented()->updateExistingPivot($movie->id, ['rating' => $rating]);
-        }
-
-        return redirect('usuario#meusFilmes')->with('message', 'Filme devolvido com sucesso.');
+        return redirect('usuario#meusFilmes');
     }
 
 }
