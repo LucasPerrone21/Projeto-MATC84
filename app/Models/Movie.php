@@ -42,5 +42,10 @@ class Movie extends Model
     {
         return $this->user_ratings()->count();
     }
+
+    public function user_previous_rating($user_id)
+    {
+        return $this->user_ratings()->where('user_id', $user_id)->first()->pivot->rating;
+    }
 }
 
